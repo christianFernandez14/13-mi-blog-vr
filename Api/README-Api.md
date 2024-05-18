@@ -33,7 +33,9 @@
 
 /**CONCETARNOS A LA BASE DE DATO CON MONGOOSE*/
 
+1.- Debemos tener arriba nuestra DB (ejecutar el mongod.exe) y sigusta el cliente visual de MonngoDB Compass y me conecto
 
+2.- En el compass, creamos la DB junto a su colección, ya que no lo permite crear, si no la definimos.
 
 
 
