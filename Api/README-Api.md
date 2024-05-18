@@ -63,3 +63,9 @@
 2.- Separamos la logica de negocio de nuestro proyecto y para ello esta a cargo los controladores que no seran más que metodos o funciones
 
 3.- Crearemos rutas y la mantendremos fuera del archivo de connexión, para tener màs limpio el codigo
+
+4.- Recuerda que el modelo que vayas a crear, va servir para conectarse a la collección de la DB
+
+5.- Hablando del o los modelos, es importante saber que al momento de definirlos, son bastante felxibles, a lo que me refiero que solo puede pasarle el tipo de dato que quiere que sea el campo, sino otros propiedades que puedes revisar en la documentación de mongoose.
+
+6.- Con ese diseño del modelo, ya puedo interectuar con DB (agregar, actulizar, elimniar, buscar)
