@@ -49,3 +49,7 @@
 
 
 /**CREANDO EL SERVIDOR CON NODE*/
+
+1.- Nos permite escuhar peticiones y crear rutas, entre otras cosas.
+
+2.- Donde estamos levantando el servidor, perfectamente puede ir el llamdo a la conexon a la DB, dependera de como lo quieras estructurar.
