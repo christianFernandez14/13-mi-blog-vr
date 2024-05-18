@@ -69,3 +69,17 @@
 5.- Hablando del o los modelos, es importante saber que al momento de definirlos, son bastante felxibles, a lo que me refiero que solo puede pasarle el tipo de dato que quiere que sea el campo, sino otros propiedades que puedes revisar en la documentación de mongoose.
 
 6.- Con ese diseño del modelo, ya puedo interectuar con DB (agregar, actulizar, elimniar, buscar)
+
+/**CREANDO EL CONTROLADOR / EL ROUTER- ARQUITECTURA DEL PROYECTO*/
+
+1.- Recuerda que el controlador, tiene que ver con las cciones que hara cada ruta que creamos, es decir, creamos el metodo buscar, aplicamos toda  lo logica y ese metodoc creado lo asociamos a un endPoint que tenga que ver con  busqueda.
+
+2.- Hay dos manera de trabajar los metodos dentros de los controdaores:
+
+    Como clases o funcion general y que dentro de esta maneje multiples propiedades que seran las acciones de cada uno de los metodos.
+
+    Como metodos separados.
+
+3.- En el flujo de trabajo cada controlador debe tener su endPoint, por lo tanto el flow del trabajo post controller crear la ruta.
+
+      modelo (1 vez o las que requieras) ==> Controlador ==> Router ==> app (en el index una sola vez)
