@@ -53,3 +53,5 @@
 1.- Nos permite escuhar peticiones y crear rutas, entre otras cosas.
 
 2.- Donde estamos levantando el servidor, perfectamente puede ir el llamdo a la conexon a la DB, dependera de como lo quieras estructurar.
+
+3.- Creamos una ruta de prueba para ver el flujo de trabajo entre el cliente (postman) / servidor / base de datos

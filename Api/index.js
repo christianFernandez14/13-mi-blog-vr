@@ -1,22 +1,29 @@
 const { conexion } = require("./database/conexion")
-
-// Requerimos el Espress y Cors
 const express = require("express")
 const cors = require("cors")
 
 console.log("App de node arrancada");
 
-// Creamos nuestra variable express y definimos un puerto de conexion
 const app = express()
 const puerto = 3900
 
-// Configuramos el Cors, el midelwere siempre debe ejecutarse antes de las rutas
 app.use(cors())
 
-// Convertimos lo que venga por body a un json
 app.use(express.json())
 
-// Creamos y levantamos el servidor:
+// Ruta de prueba
+app.get("/probando", (req, res) => {
+
+  /*Otra manera de enviar respuesta, y es la que más usaremos, por estamos creado APIs */
+  return res.status(200).json({
+    status: "success",
+    message: "Ruta creada con exito"
+  })
+
+  /*Una manera de enviar respuesta */
+  // return res.status(200).send(`<h1>Hola</h1>`)
+})
+
 app.listen(puerto, () => {
   console.log(`Servidor corriendo por el puerto: ${puerto}`);
   conexion()
