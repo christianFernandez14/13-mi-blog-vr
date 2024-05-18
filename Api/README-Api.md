@@ -55,3 +55,11 @@
 2.- Donde estamos levantando el servidor, perfectamente puede ir el llamdo a la conexon a la DB, dependera de como lo quieras estructurar.
 
 3.- Creamos una ruta de prueba para ver el flujo de trabajo entre el cliente (postman) / servidor / base de datos
+
+/**CREANDO EL MODELO - ARQUITECTURA DEL PROYECTO*/
+
+1.- El modelo es el esquema con que mongoose hara toda la modelación con la DB (interactua directamente con ella).
+
+2.- Separamos la logica de negocio de nuestro proyecto y para ello esta a cargo los controladores que no seran más que metodos o funciones
+
+3.- Crearemos rutas y la mantendremos fuera del archivo de connexión, para tener màs limpio el codigo
