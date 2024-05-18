@@ -37,6 +37,15 @@
 
 2.- En el compass, creamos la DB junto a su colección, ya que no lo permite crear, si no la definimos.
 
+3.- Nos comenzamos a organizar un poco y creamos en nustra carpeta raiz un folder de nombre "database" > conexion.js
+
+4.- Requerimos todos los metodos y librerias, para podero conectarme.
+
+5.- En el backEnd, para importar dependencias o librerias se usa el "require" en vez del "import", lo que hace el require es ir a la carpeta de node-mudules y tomar su dependencia
+
+6.- Usamo el archivo index.js para llamar la conexion, ya que en package.json definimos que nodemon viera a ese archivo
+
+7.- Al momento de crear el metodo de conexion nos percatamos que la version de mongoose instalada para este momento v6.4.3 no me permite el String de conexion solo la dirección Ip de conexión 
 
 
 /**CREANDO EL SERVIDOR CON NODE*/
