@@ -4,7 +4,7 @@
 
 2.- Y creamos nuestro "package.json", es decir vamos inicializar un proyecto de node.
 
-    en el foder debe colocar > npm init   ... Sigues todos lo pasos
+    en el foder debe colocar > npm init   ... Sigues todos lo pasos, para crear el package.json
 
 3.- Instalaremos Frameworks, que nos ayudaran en el desarrollo del proyecto
 
@@ -20,7 +20,7 @@
     .- Validator > Libreria que nos permite validar datos del lado backEnd
        Te posicionas en el carpeta del backEnd > "npm install validator --save"
 
-    .- Cors > Un midelwere, que nos permite gestionar el acceso cruzado entre dominios.  Es un mecanismo de seguridad implementado por los navegadores web 
+    .- Cors > Un middleware, que nos permite gestionar el acceso cruzado entre dominios.  Es un mecanismo de seguridad implementado por los navegadores web 
        Te posicionas en el carpeta del backEnd > "npm install cors --save"
 
     .- Nodemon > Es el que permite escuhar simpre al proyecto, monitorearlo, y lo ideal que lo tengas dentro de las dependencias pero Dev y no en produción como las anteriores.
@@ -56,6 +56,7 @@
 
 3.- Creamos una ruta de prueba para ver el flujo de trabajo entre el cliente (postman) / servidor / base de datos
 
+
 /**CREANDO EL MODELO - ARQUITECTURA DEL PROYECTO*/
 
 1.- El modelo es el esquema con que mongoose hara toda la modelación con la DB (interactua directamente con ella).
@@ -70,6 +71,7 @@
 
 6.- Con ese diseño del modelo, ya puedo interectuar con DB (agregar, actulizar, elimniar, buscar)
 
+
 /**CREANDO EL CONTROLADOR / EL ROUTER- ARQUITECTURA DEL PROYECTO*/
 
 1.- Recuerda que el controlador, tiene que ver con las cciones que hara cada ruta que creamos, es decir, creamos el metodo buscar, aplicamos toda  lo logica y ese metodoc creado lo asociamos a un endPoint que tenga que ver con  busqueda.
@@ -83,3 +85,10 @@
 3.- En el flujo de trabajo cada controlador debe tener su endPoint, por lo tanto el flow del trabajo post controller crear la ruta.
 
       modelo (1 vez o las que requieras) ==> Controlador ==> Router ==> app (en el index una sola vez)
+
+4.- Recordemos un poco los metodos HTTP que estaremos trabajando en el folder de routes (de las rutas)
+    
+    GET: Obtener un recurso en mi backEnd
+    POST: Enviar, guardar un recurso en mi backEnd
+    PUT: Actualizar un recurso en mi backEnd
+    DELETE: Eliminar un recurso en mi backEnd

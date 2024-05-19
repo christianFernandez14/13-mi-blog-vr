@@ -1,4 +1,12 @@
-// Nos traemos nuestra test de prueba desde el index, para ir refactorizando el codigo
+
+const crear = (req, res) => {
+
+  return res.status(200).json({
+    status: "success"
+  })
+}
+
+
 const test = (req, res) => {
 
   return res.status(200).json({
@@ -8,6 +16,6 @@ const test = (req, res) => {
 }
 
 module.exports = {
-  // Aca vamos exportar cada modelo creado
-  test
+  test,
+  crear
 }
