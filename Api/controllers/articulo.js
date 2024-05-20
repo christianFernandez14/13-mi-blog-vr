@@ -1,13 +1,27 @@
 const validator = require("validator")
 const Articulo = require("../models/Articulo")
 
+
+
 const listarArticulos = (req, res) => {
 
-  // En este miminuto esta ordenado de manera el mas viejo al mas nuevo, agrendale un nuevo metodo podemos invertirlo (sort)
   let consulta = Articulo.find({})
 
-  // Podemos aplicarle limites a la consulta
-  consulta.limit(4) // Me traeria los ultimos 4 articulos agregados
+  let parametro = req.params.ultimos
+
+  // De esta manera manejo el parametro opcional que viene por el url más dinamico
+  if (req.params.ultimos) {
+    if (!isNaN(parseInt(parametro))) {
+      consulta.limit(parseInt(parametro));
+
+    } else {
+      // Manejar el caso en que el parámetro no sea un número válido
+      return res.status(400).json({
+        status: "error",
+        message: "El parámetro debe ser un número válido"
+      });
+    }
+  }
 
   consulta.sort({ fecha: -1 })
           .exec((error, articulos) => {
@@ -19,15 +33,13 @@ const listarArticulos = (req, res) => {
         })
       }
 
-      // Podriamos agregar una propiedad más donde veamos la cantidad de artuclos que me trae la consulta
       return res.status(200).json({
         status: "Success",
+        parametro_url: parametro,
         cantidad: articulos.length,
         articulos
       })
     })
-
-
 }
 
 const crear = (req, res) => {
@@ -88,5 +100,4 @@ module.exports = {
   test,
   crear,
   listarArticulos,
-  listarArticulos
 }
