@@ -3,6 +3,19 @@ const Articulo = require("../models/Articulo")
 
 
 
+const unArtiuclo = (req, res) => {
+  // recogemos un id por params
+
+  // Si no exite devolvemos un error
+
+  // Devolvemos el Resultado
+
+  // Test de flojo de trabajo
+  return res.status(200).json({
+    status: "success"
+  })
+}
+
 const listarArticulos = (req, res) => {
 
   let consulta = Articulo.find({})
@@ -24,7 +37,7 @@ const listarArticulos = (req, res) => {
   }
 
   consulta.sort({ fecha: -1 })
-          .exec((error, articulos) => {
+    .exec((error, articulos) => {
 
       if (error || !articulos) {
         return res.status(404).json({
@@ -100,4 +113,5 @@ module.exports = {
   test,
   crear,
   listarArticulos,
+  unArtiuclo
 }

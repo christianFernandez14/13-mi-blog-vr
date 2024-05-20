@@ -5,8 +5,9 @@ const router = Router()
 
 // Aca estarán todas las rutas o endPoint que vienen del controller
 router.post("/crear", ArticuloControladar.crear)
-// Podemos reutilizar la ruta, dadole un parametro opcional (colocando ?) y No obligatario
 router.get("/articulos/:ultimos?", ArticuloControladar.listarArticulos)
+router.get("/articulo/:id", ArticuloControladar.unArtiuclo)
+
 
 
 
