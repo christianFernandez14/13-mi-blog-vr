@@ -2,18 +2,21 @@ const validator = require("validator")
 const Articulo = require("../models/Articulo")
 
 
+const eliminar = (req, res) => {
 
-const unArtiuclo = (req, res) => {
-  // recogemos un id por params
-  // Recuerda que lo recoges por la url, siempres es un string, para esta clg, para lo puedas visualizar
+  // test de prueba de flujo del endPoint
+
+  return res.status(200).json({
+    status: "success"
+  })
+}
+
+const unArticulo = (req, res) => {
+
   let id = req.params.id
 
-  console.log(typeof (id))
-
-  // Buscamos el articulo
   Articulo.findById(id, (error, articulo) => {
 
-    // Si no exite devolvemos un error
     if (error || !articulo) {
       return res.status(404).json({
         status: "error",
@@ -21,14 +24,12 @@ const unArtiuclo = (req, res) => {
       });
     }
 
-    // Devolvemos el Resultado
     return res.status(200).json({
       status: "success",
       articulo
     })
   })
 }
-
 
 const listarArticulos = (req, res) => {
 
@@ -127,5 +128,6 @@ module.exports = {
   test,
   crear,
   listarArticulos,
-  unArtiuclo
+  unArticulo,
+  eliminar
 }

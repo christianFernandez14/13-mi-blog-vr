@@ -6,7 +6,8 @@ const router = Router()
 // Aca estarán todas las rutas o endPoint que vienen del controller
 router.post("/crear", ArticuloControladar.crear)
 router.get("/articulos/:ultimos?", ArticuloControladar.listarArticulos)
-router.get("/articulo/:id", ArticuloControladar.unArtiuclo)
+router.get("/articulo/:id", ArticuloControladar.unArticulo)
+router.delete("/articulo/:id", ArticuloControladar.eliminar)
 
 
 
