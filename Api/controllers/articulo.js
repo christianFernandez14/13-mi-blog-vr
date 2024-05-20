@@ -1,24 +1,31 @@
 const validator = require("validator")
 const Articulo = require("../models/Articulo")
 
-// Vamos a diseñar un metodo muy simplea al inicio, solo que me liste cada articulo que hay en la DB.
 const listarArticulos = (req, res) => {
 
-  // Se recomienda alojar en una variable la consulatas, por si necensitas mas adelante aplicarles otros metodos
-  let consulta = Articulo.find({}).exec((error, articulos) => {
+  // En este miminuto esta ordenado de manera el mas viejo al mas nuevo, agrendale un nuevo metodo podemos invertirlo (sort)
+  let consulta = Articulo.find({})
 
-    if (error || !articulos) {
-      return res.status(404).json({
-        status: "error",
-        message: "No se han encontrados articulos"
+  // Podemos aplicarle limites a la consulta
+  consulta.limit(4) // Me traeria los ultimos 4 articulos agregados
+
+  consulta.sort({ fecha: -1 })
+          .exec((error, articulos) => {
+
+      if (error || !articulos) {
+        return res.status(404).json({
+          status: "error",
+          message: "No se han encontrados articulos"
+        })
+      }
+
+      // Podriamos agregar una propiedad más donde veamos la cantidad de artuclos que me trae la consulta
+      return res.status(200).json({
+        status: "Success",
+        cantidad: articulos.length,
+        articulos
       })
-    }
-
-    return res.status(200).json({
-      status: "Success",
-      articulos
     })
-  })
 
 
 }
