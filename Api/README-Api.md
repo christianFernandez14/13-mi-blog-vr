@@ -17,7 +17,7 @@
     .- Multer > Libreria que nos permite gestionar archivos, como subirlos a nustro proyectos.  
        Te posicionas en el carpeta del backEnd > "npm install multer --save"
 
-    .- Validator > Libreria que nos permite validar datos del lado backEnd
+    .- Validator > Libreria que nos permite validar datos del lado backEnd y el frondEnd tambien
        Te posicionas en el carpeta del backEnd > "npm install validator --save"
 
     .- Cors > Un middleware, que nos permite gestionar el acceso cruzado entre dominios.  Es un mecanismo de seguridad implementado por los navegadores web 
@@ -91,4 +91,9 @@
     GET: Obtener un recurso en mi backEnd
     POST: Enviar, guardar un recurso en mi backEnd
     PUT: Actualizar un recurso en mi backEnd
-    DELETE: Eliminar un recurso en mi backEnd
+    DELETE: Eliminar un recurso en mi backEnd.
+
+5.- Cuando hablamos del POST, al momento de hacer las pruebas, tenemos que recibirlas por "body" y usamos al opcion "x-www-form-urlencoded"
+    ya que es la manera que un formulario normal enviaria desde el frondEnd al backEnd la info.
+
+    Cuando este tomando los parametros desde body y definas las pruebas, debes tener cuidado como escribes las propiedades, si en mayuscula o miniscula, ya que es sensible al camelCase.
