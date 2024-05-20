@@ -5,16 +5,30 @@ const Articulo = require("../models/Articulo")
 
 const unArtiuclo = (req, res) => {
   // recogemos un id por params
+  // Recuerda que lo recoges por la url, siempres es un string, para esta clg, para lo puedas visualizar
+  let id = req.params.id
 
-  // Si no exite devolvemos un error
+  console.log(typeof (id))
 
-  // Devolvemos el Resultado
+  // Buscamos el articulo
+  Articulo.findById(id, (error, articulo) => {
 
-  // Test de flojo de trabajo
-  return res.status(200).json({
-    status: "success"
+    // Si no exite devolvemos un error
+    if (error || !articulo) {
+      return res.status(404).json({
+        status: "error",
+        message: "No se ha encontrado el articulo"
+      });
+    }
+
+    // Devolvemos el Resultado
+    return res.status(200).json({
+      status: "success",
+      articulo
+    })
   })
 }
+
 
 const listarArticulos = (req, res) => {
 
