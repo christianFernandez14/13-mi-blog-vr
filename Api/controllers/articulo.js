@@ -1,11 +1,26 @@
 const validator = require("validator")
 const Articulo = require("../models/Articulo")
 
+// Vamos a diseñar un metodo muy simplea al inicio, solo que me liste cada articulo que hay en la DB.
 const listarArticulos = (req, res) => {
 
-  return res.status(200).json({
-    status: "Success"
+  // Se recomienda alojar en una variable la consulatas, por si necensitas mas adelante aplicarles otros metodos
+  let consulta = Articulo.find({}).exec((error, articulos) => {
+
+    if (error || !articulos) {
+      return res.status(404).json({
+        status: "error",
+        message: "No se han encontrados articulos"
+      })
+    }
+
+    return res.status(200).json({
+      status: "Success",
+      articulos
+    })
   })
+
+
 }
 
 const crear = (req, res) => {
@@ -65,5 +80,6 @@ const test = (req, res) => {
 module.exports = {
   test,
   crear,
+  listarArticulos,
   listarArticulos
 }
