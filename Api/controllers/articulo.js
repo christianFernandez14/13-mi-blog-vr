@@ -4,10 +4,23 @@ const Articulo = require("../models/Articulo")
 
 const eliminar = (req, res) => {
 
-  // test de prueba de flujo del endPoint
+  // recogemos el id por params
+  let articulo_id = req.params.id
 
-  return res.status(200).json({
-    status: "success"
+  Articulo.findOneAndDelete({_id: articulo_id}, (error, articuloEliminar) => {
+
+    if (error || !articuloEliminar) {
+      return res.status(404).json({
+        status: "error",
+        message: "No se ha encontrado el articulo"
+      });
+    }
+
+    return res.status(200).json({
+      status: "success",
+      articuloEliminar,
+      mensaje: "Se elimino con exito..."
+    })
   })
 }
 
