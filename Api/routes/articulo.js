@@ -3,9 +3,10 @@ const ArticuloControladar = require("../controllers/articulo")
 
 const router = Router()
 
-router.post("/crear", ArticuloControladar.crear)
-
 // Aca estarán todas las rutas o endPoint que vienen del controller
+router.post("/crear", ArticuloControladar.crear)
+router.get("/articulos", ArticuloControladar.listarArticulos)
+
 
 
 // Aca quedo la ruta de prueba.
