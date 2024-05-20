@@ -1,18 +1,15 @@
-// Para valirdar lo que queremos en nustro backEnd, debemos importar la libreri que nos los permite hacer
 const validator = require("validator")
+// Requerimos el Schema del modelo creado para poder implementarlo mi metodo crear.
+const Articulo = require("../models/Articulo")
 
 const crear = (req, res) => {
 
-  // Pasos para enviar info a la DB:
-  // Recoger la información por post a guardar, esto viene desde el frondEnd (formulario, petición )
   let parametros = req.body
 
-  // Validar los datos (aca hacemos uso de la libreria validator y nos evitamos la complejidad de las validaciones)
   try {
 
-    // Uno de sus metodos es isEmpty, que me devuelte "true" si el campo esta vacio, pero aca quiero lo contarrio por eso "!"
     let validar_titulo = !validator.isEmpty(parametros.titulo) &&
-                          validator.isLength(parametros.titulo, { min: 5, max: undefined })
+      validator.isLength(parametros.titulo, { min: 5, max: undefined })
 
     let validar_contenido = !validator.isEmpty(parametros.contenido)
 
@@ -28,16 +25,38 @@ const crear = (req, res) => {
   }
 
   // Debemos crear el Objeto que sera guardado, bajo el Schema ya diseñado es decir el modelo creado
+  const articulo = new Articulo(parametros)
+
+
 
   // Asignamos los valores de manera al objeto (de manera manual o automatizada)
+  // De manera manual (esta estaria de algulna forma bien, si tuvieses un par de datos que guardar):
+  // articulo.titulo = parametros.titulo
+  // articulo.contenido = parametros.contenido
+
+  // De forma automatica, es siemplemente pasar el parametro a al instancia creada.
 
   // Guardar el articulo en la base de dato
+  // articulo.save()  // De esta manera se podria guardar correctamente.
 
-  // Devolver el resultado
-  return res.status(200).json({
-    status: "success",
-    parametros
+  // Pero lo importante es siempre estar preocupados que pueda existir algun problema al guar ala info en el DB, por eso hacemos uso de su callBack, para manejar el error y cada articulo que se guardara en el DB
+  articulo.save((error, articuloGuardado) => {
+
+    if (error || !articuloGuardado) {
+      return res.status(400).json({
+        status: "error",
+        message: "No se ha guardado el articulo"
+      })
+    }
+    // Devolver el resultado
+    return res.status(200).json({
+      status: "success",
+      articuloGuardado,
+      message: "Se guardo con exito la información"
+    })
   })
+
+
 }
 
 
