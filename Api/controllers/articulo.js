@@ -6,9 +6,6 @@ const { validarArticulo } = require("../helpers/validar")
 
 const subirImagen = (req, res) => {
 
-  // Configurar el multer // listo en el router
-
-  // validamos que se envie un archivo
   if (!req.file && !req.files) {
     return res.status(404).json({
       status: "error",
@@ -16,18 +13,14 @@ const subirImagen = (req, res) => {
     })
   }
 
-  // Requerimos el nombre del archivo (imagen)
   let archivo = req.file.originalname
-
-  // Obtenemos la extension del archivo
   let archivo_split = archivo.split(".")
   let extension = archivo_split.pop().toLowerCase()
 
-  // Comprobar extensión correcta - para que solo sea formato imagen
   if (!["png", "jpg", "jpeg", "gif"].includes(extension)) {
 
     let path = req.file.path
-    // Borramos archivo y enviamos respuesta / lo hacemos con la libreria files systems (fs)
+
     fs.unlink(path, error => {
 
       if (error) {
@@ -41,18 +34,30 @@ const subirImagen = (req, res) => {
     })
   } else {
     // Si todo va bien, actulizar el articulo
+    // Hacemos practicamente los mismo que hicimos en editar
 
-    // Devolver la respuesta.
+    let articuloId = req.params.id
+    let parametro = req.file.filename
 
-    return res.status(200).json({
-      status: "success",
+    Articulo.findOneAndUpdate({ _id: articuloId }, { imagen: parametro }, { new: true }, (error, articuloEditado) => {
 
+      if (error || !articuloEditado) {
+
+        return res.status(404).json({
+          status: "error",
+          menssage: "No se ha podido editar el articulo"
+        })
+      }
+
+      // Delvolvemos la respuesta
+      return res.status(200).json({
+        status: "success",
+        artiuculo: articuloEditado,
+        menssage: "Articulo editado con exito ...",
+        // fichero: req.file
+      })
     })
   }
-
-
-
-
 }
 
 const editarArticulo = (req, res) => {
