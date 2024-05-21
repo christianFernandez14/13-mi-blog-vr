@@ -97,3 +97,5 @@
     ya que es la manera que un formulario normal enviaria desde el frondEnd al backEnd la info.
 
     Cuando este tomando los parametros desde body y definas las pruebas, debes tener cuidado como escribes las propiedades, si en mayuscula o miniscula, ya que es sensible al camelCase.
+
+6.- Cuando estamos con la actulización de ficheros, y usamos la libreria de multer, debes recordar que el multer es un middleware que se aplica una ruta en concreto, por lo tanto ese middleware lo vamos aplicaremos en el fichero de "routers", donde estan definidas todas la rutas.

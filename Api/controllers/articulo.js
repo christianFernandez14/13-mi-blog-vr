@@ -1,12 +1,58 @@
+// Requerimes fs, para manipular archivos en el sistema, que es nativa de node
+const fs = require("fs")
 const Articulo = require("../models/Articulo")
 const { validarArticulo } = require("../helpers/validar")
 
 
 const subirImagen = (req, res) => {
 
-  return res.status(200).json({
-    status: "success"
-  })
+  // Configurar el multer // listo en el router
+
+  // validamos que se envie un archivo
+  if (!req.file && !req.files) {
+    return res.status(404).json({
+      status: "error",
+      message: "Petición invalida: No se ha enviado ningun archivo"
+    })
+  }
+
+  // Requerimos el nombre del archivo (imagen)
+  let archivo = req.file.originalname
+
+  // Obtenemos la extension del archivo
+  let archivo_split = archivo.split(".")
+  let extension = archivo_split.pop().toLowerCase()
+
+  // Comprobar extensión correcta - para que solo sea formato imagen
+  if (!["png", "jpg", "jpeg", "gif"].includes(extension)) {
+
+    let path = req.file.path
+    // Borramos archivo y enviamos respuesta / lo hacemos con la libreria files systems (fs)
+    fs.unlink(path, error => {
+
+      if (error) {
+        console.log(`Error al borrar el archivo: ${error}`);
+      }
+
+      return res.status(400).json({
+        status: "error",
+        message: "Archivo invalido, se permite solo con extension: PNG, JGP, JPEG, GIF "
+      })
+    })
+  } else {
+    // Si todo va bien, actulizar el articulo
+
+    // Devolver la respuesta.
+
+    return res.status(200).json({
+      status: "success",
+
+    })
+  }
+
+
+
+
 }
 
 const editarArticulo = (req, res) => {
