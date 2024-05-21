@@ -1,4 +1,3 @@
-// Me tengo que traer la la libreria de validator para este archivo, ya que se este se encargara de hacer esta logica
 const validator = require("validator")
 
 

@@ -1,15 +1,19 @@
 const Articulo = require("../models/Articulo")
-// Ahora exporto mi validacion
 const { validarArticulo } = require("../helpers/validar")
 
 
+const subirImagen = (req, res) => {
+
+  return res.status(200).json({
+    status: "success"
+  })
+}
 
 const editarArticulo = (req, res) => {
 
   let articuloId = req.params.id
   let parametros = req.body
 
-  // Empleamos la factorización.
   try {
 
     validarArticulo(parametros)
@@ -124,7 +128,6 @@ const crear = (req, res) => {
 
   let parametros = req.body
 
-  // Empleamos la factorización.
   try {
 
     validarArticulo(parametros)
@@ -138,7 +141,6 @@ const crear = (req, res) => {
   }
 
   const articulo = new Articulo(parametros)
-
 
   articulo.save((error, articuloGuardado) => {
 
@@ -175,5 +177,6 @@ module.exports = {
   listarArticulos,
   unArticulo,
   eliminarArticulo,
-  editarArticulo
+  editarArticulo,
+  subirImagen
 }

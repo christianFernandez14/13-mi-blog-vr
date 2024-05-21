@@ -9,6 +9,7 @@ router.get("/articulos/:ultimos?", ArticuloControladar.listarArticulos)
 router.get("/articulo/:id", ArticuloControladar.unArticulo)
 router.delete("/articulo/:id", ArticuloControladar.eliminarArticulo)
 router.put("/articulo/:id", ArticuloControladar.editarArticulo)
+router.post("/subir-imagen/:id", ArticuloControladar.subirImagen)
 
 
 
