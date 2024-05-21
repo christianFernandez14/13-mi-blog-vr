@@ -2,9 +2,15 @@ const validator = require("validator")
 const Articulo = require("../models/Articulo")
 
 
-const eliminar = (req, res) => {
+const editarArticulo = (req, res) =>{
 
-  // recogemos el id por params
+  return res.status(200).json({
+    status: "success"
+  })
+}
+
+const eliminarArticulo = (req, res) => {
+
   let articulo_id = req.params.id
 
   Articulo.findOneAndDelete({_id: articulo_id}, (error, articuloEliminar) => {
@@ -142,5 +148,6 @@ module.exports = {
   crear,
   listarArticulos,
   unArticulo,
-  eliminar
+  eliminarArticulo,
+  editarArticulo
 }

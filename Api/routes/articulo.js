@@ -7,7 +7,8 @@ const router = Router()
 router.post("/crear", ArticuloControladar.crear)
 router.get("/articulos/:ultimos?", ArticuloControladar.listarArticulos)
 router.get("/articulo/:id", ArticuloControladar.unArticulo)
-router.delete("/articulo/:id", ArticuloControladar.eliminar)
+router.delete("/articulo/:id", ArticuloControladar.eliminarArticulo)
+router.put("/articulo/:id", ArticuloControladar.editarArticulo)
 
 
 
