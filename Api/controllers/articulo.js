@@ -1,14 +1,30 @@
 // Requerimes fs, para manipular archivos en el sistema, que es nativa de node
 const fs = require("fs")
+const path = require("path")
 const Articulo = require("../models/Articulo")
 const { validarArticulo } = require("../helpers/validar")
 
 
 const imagen = (req, res) => {
 
-  return res.status(200).json({
-    status: "success"
+  let fichero = req.params.fichero
+  let rutaFisica = `./imagenes/articulos/${fichero}` 
+
+  fs.stat(rutaFisica, (error, existe) => {
+
+    if (existe) {
+
+      // Para poder enviar la imagen me apoyo en un metodo que trae el objeto path
+      return res.sendFile(path.resolve(rutaFisica))
+    }else{
+
+      return res.status(400).json({
+        status: "error",
+        message: "La imagen no existe"
+      })
+    }
   })
+
 }
 
 const subirImagen = (req, res) => {
