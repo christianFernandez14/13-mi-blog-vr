@@ -4,6 +4,13 @@ const Articulo = require("../models/Articulo")
 const { validarArticulo } = require("../helpers/validar")
 
 
+const imagen = (req, res) => {
+
+  return res.status(200).json({
+    status: "success"
+  })
+}
+
 const subirImagen = (req, res) => {
 
   if (!req.file && !req.files) {
@@ -229,5 +236,6 @@ module.exports = {
   unArticulo,
   eliminarArticulo,
   editarArticulo,
-  subirImagen
+  subirImagen,
+  imagen
 }
