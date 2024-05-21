@@ -1,45 +1,48 @@
 const validator = require("validator")
 const Articulo = require("../models/Articulo")
 
+// Factorizando el codigo; separamos lo que más se repite dentro de una función, como el validator:
+const validarArticulo = (parametros) => {
+
+  let validar_titulo = !validator.isEmpty(parametros.titulo) &&
+    validator.isLength(parametros.titulo, { min: 5, max: undefined })
+
+  let validar_contenido = !validator.isEmpty(parametros.contenido)
+
+  if (!validar_titulo || !validar_contenido) {
+    throw new Error("No se ha validado la información")
+  }
+
+}
 
 const editarArticulo = (req, res) => {
 
-  // Recoger el id del articulo a editar
   let articuloId = req.params.id
-
-
-  // Recoger los datos del body
   let parametros = req.body
 
-  // Validar los datos
+  // Empleamos la factorización.
   try {
 
-    let validar_titulo = !validator.isEmpty(parametros.titulo) &&
-      validator.isLength(parametros.titulo, { min: 5, max: undefined })
-
-    let validar_contenido = !validator.isEmpty(parametros.contenido)
-
-    if (!validar_titulo || !validar_contenido) {
-      throw new Error("No se ha validado la información")
-    }
+    validarArticulo(parametros)
 
   } catch (error) {
+
     return res.status(400).json({
       status: "error",
-      message: "Error al actulizar el articulo"
+      message: "Faltan datos por enviar"
     })
   }
 
-  // Buscar y actulizar datos
   Articulo.findOneAndUpdate({ _id: articuloId }, parametros, { new: true }, (error, articuloEditado) => {
 
     if (error || !articuloEditado) {
+
       return res.status(404).json({
         status: "error",
         menssage: "No se ha podido editar el articulo"
       })
     }
-    // Devolver respuesta.
+
     return res.status(200).json({
       status: "success",
       artiuculo: articuloEditado,
@@ -132,18 +135,13 @@ const crear = (req, res) => {
 
   let parametros = req.body
 
+  // Empleamos la factorización.
   try {
 
-    let validar_titulo = !validator.isEmpty(parametros.titulo) &&
-      validator.isLength(parametros.titulo, { min: 5, max: undefined })
-
-    let validar_contenido = !validator.isEmpty(parametros.contenido)
-
-    if (!validar_titulo || !validar_contenido) {
-      throw new Error("No se ha validado la información")
-    }
+    validarArticulo(parametros)
 
   } catch (error) {
+
     return res.status(400).json({
       status: "error",
       message: "Faltan datos por enviar"
