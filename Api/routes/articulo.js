@@ -24,6 +24,9 @@ router.delete("/articulo/:id", ArticuloControladar.eliminarArticulo)
 router.put("/articulo/:id", ArticuloControladar.editarArticulo)
 router.post("/subir-imagen/:id", [upload.single("file0")], ArticuloControladar.subirImagen)
 router.get("/imagen/:fichero", ArticuloControladar.imagen)
+// Le pasamos la busqueda por la petición
+router.get("/buscar/:busqueda", ArticuloControladar.busqueda)
+
 
 
 

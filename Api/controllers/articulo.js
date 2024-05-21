@@ -5,18 +5,24 @@ const Articulo = require("../models/Articulo")
 const { validarArticulo } = require("../helpers/validar")
 
 
+const busqueda = (req, res) => {
+
+  return res.status(200).json({
+    status: "success"
+  })
+}
+
 const imagen = (req, res) => {
 
   let fichero = req.params.fichero
-  let rutaFisica = `./imagenes/articulos/${fichero}` 
+  let rutaFisica = `./imagenes/articulos/${fichero}`
 
   fs.stat(rutaFisica, (error, existe) => {
 
     if (existe) {
 
-      // Para poder enviar la imagen me apoyo en un metodo que trae el objeto path
       return res.sendFile(path.resolve(rutaFisica))
-    }else{
+    } else {
 
       return res.status(400).json({
         status: "error",
@@ -253,5 +259,6 @@ module.exports = {
   eliminarArticulo,
   editarArticulo,
   subirImagen,
-  imagen
+  imagen,
+  busqueda
 }
