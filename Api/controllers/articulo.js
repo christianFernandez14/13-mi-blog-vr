@@ -6,10 +6,8 @@ const { validarArticulo } = require("../helpers/validar")
 
 const busqueda = (req, res) => {
 
-  // Extremos el string de busqueda
   let busqueda = req.params.busqueda
 
-  // Metodo Find con OR y ordenamos del más nuevo al más viejo
   Articulo.find({
     "$or": [
       { "titulo": { "$regex": busqueda, "$options": "i" } },
@@ -262,15 +260,6 @@ const crear = (req, res) => {
 
 }
 
-
-// Metodo de test, para probar el flujo de trabajo en el backEnd
-const test = (req, res) => {
-
-  return res.status(200).json({
-    status: "success",
-    message: "Test creado con exito"
-  })
-}
 
 module.exports = {
   test,

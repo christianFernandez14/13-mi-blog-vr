@@ -13,7 +13,6 @@ const ArticuloSchema = Schema({
     type: Date,
     default: Date.now
   },
-  // habia un error acá, con el nombre de la prop.
   imagen: {
     type: String,
     default: "default.jpg"
