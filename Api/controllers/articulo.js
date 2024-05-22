@@ -1,4 +1,3 @@
-// Requerimes fs, para manipular archivos en el sistema, que es nativa de node
 const fs = require("fs")
 const path = require("path")
 const Articulo = require("../models/Articulo")
@@ -7,9 +6,31 @@ const { validarArticulo } = require("../helpers/validar")
 
 const busqueda = (req, res) => {
 
-  return res.status(200).json({
-    status: "success"
-  })
+  // Extremos el string de busqueda
+  let busqueda = req.params.busqueda
+
+  // Metodo Find con OR y ordenamos del más nuevo al más viejo
+  Articulo.find({
+    "$or": [
+      { "titulo": { "$regex": busqueda, "$options": "i" } },
+      { "contenido": { "$regex": busqueda, "$options": "i" } }
+    ]})
+    .sort({ fecha: -1 })
+    .exec((error, artiuculosEncontrados) => {
+
+      if (error || !artiuculosEncontrados || artiuculosEncontrados.length <= 0) {
+        return res.status(404).json({
+          status: "error",
+          massage: "No se han encontraado articulos"
+        })
+      }
+
+      return res.status(200).json({
+        status: "success",
+        cant_articulos: artiuculosEncontrados.length,
+        articulos: artiuculosEncontrados
+      })
+    })
 }
 
 const imagen = (req, res) => {
