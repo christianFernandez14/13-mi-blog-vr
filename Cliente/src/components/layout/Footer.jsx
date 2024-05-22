@@ -2,7 +2,7 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <div>Footer</div>
+    <footer class="footer">&copy; Master en JavaScript E12 y TypeScript</footer>
   )
 }
 
