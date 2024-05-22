@@ -106,6 +106,7 @@ body {
   padding: 60px 25px 60px 25px;
 }
 
+.button,
 button,
 input[type="submit"],
 input[type="buttton"] {
@@ -164,6 +165,28 @@ input[type="buttton"] {
   opacity: 4;
   outline: none;
   border-color: transparent;
+}
+
+.jumbo{
+  width: 75%;
+  padding: 55px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 5px #ddd;
+  margin: 25px auto;
+}
+
+.jumbo h1{
+  font-size: 30px;
+  color: #444;
+}
+
+.jumbo p{
+  margin-bottom: 40px;
+
+}
+.jumbo a{
+  text-transform: none;
 }
 
 /* Estilos al Pie de Pagina */
