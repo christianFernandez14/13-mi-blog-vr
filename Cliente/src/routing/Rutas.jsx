@@ -6,6 +6,8 @@ import Header from "../components/layout/Header"
 import Nav from "../components/layout/Nav"
 import Footer from "../components/layout/Footer"
 import SideBar from "../components/layout/SideBar"
+import Crear from "../components/pages/Crear"
+import Contacto from "../components/pages/Contacto"
 
 
 const Rutas = () => {
@@ -21,7 +23,9 @@ const Rutas = () => {
           <Route path="/" element={<Inicio />} />
           <Route path="/inicio" element={<Inicio />} />
           <Route path="/articulos" element={<Articulos />} />
-
+          <Route path="/crear-articulo" element={<Crear />} />
+          <Route path="/contacto" element={<Contacto />} />
+          
         </Routes>
       </section>
       <SideBar />

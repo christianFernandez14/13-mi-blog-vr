@@ -137,6 +137,7 @@ input[type="buttton"] {
   grid-area: lateral;
   background: #f6f7f9;
   border-left: 1px solid #ddd;
+  min-height: 450px;
 }
 
 .lateral > div {
