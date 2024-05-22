@@ -104,6 +104,28 @@ body {
   margin-left: 30px;
   margin-right: 30px;
   padding: 60px 25px 60px 25px;
+
+  display: flex;
+  text-align: left;
+  max-height: 225px;
+}
+
+.articulo-item .mascara {
+  width: 30%;
+  overflow: hidden;
+  margin-right: 40px;
+}
+
+.articulo-item .mascara img {
+  width: 100%;
+}
+
+.articulo-item h3 {
+  font-size: 30px;
+}
+
+.articulo-item .edit{
+  margin-right: 20px;
 }
 
 .button,
@@ -167,7 +189,7 @@ input[type="buttton"] {
   border-color: transparent;
 }
 
-.jumbo{
+.jumbo {
   width: 75%;
   padding: 55px;
   background: #fff;
@@ -176,16 +198,15 @@ input[type="buttton"] {
   margin: 25px auto;
 }
 
-.jumbo h1{
+.jumbo h1 {
   font-size: 30px;
   color: #444;
 }
 
-.jumbo p{
+.jumbo p {
   margin-bottom: 40px;
-
 }
-.jumbo a{
+.jumbo a {
   text-transform: none;
 }
 
@@ -202,13 +223,13 @@ input[type="buttton"] {
 }
 
 @media (max-width: 1085px) {
-  .content{
+  .content {
     flex-flow: column wrap;
     justify-content: center;
     align-items: center;
   }
 
-  .articulo-item{
+  .articulo-item {
     width: 70%;
   }
 }

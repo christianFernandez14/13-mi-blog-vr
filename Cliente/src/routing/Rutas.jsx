@@ -1,7 +1,7 @@
 // Cargamos nuestro modulos que necesitaremos
 import { Routes, Route, BrowserRouter, Navigate } from "react-router-dom"
 import Inicio from "../components/pages/Inicio"
-import Articulos from "../components/pages/Articulos"
+import Articulos from '../components/pages/Articulos'
 import Header from "../components/layout/Header"
 import Nav from "../components/layout/Nav"
 import Footer from "../components/layout/Footer"
@@ -25,7 +25,7 @@ const Rutas = () => {
           <Route path="/articulos" element={<Articulos />} />
           <Route path="/crear-articulo" element={<Crear />} />
           <Route path="/contacto" element={<Contacto />} />
-          
+
         </Routes>
       </section>
       <SideBar />
